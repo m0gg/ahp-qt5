@@ -1,5 +1,11 @@
 *.in
+*.o
+*.a
 *.pro.user
+/ui/moc_*
+/ui/ui_*.h
+.deps
+Makefile
 /aclocal.m4
 /autom4te.cache
 /compile
@@ -9,3 +15,10 @@ depcomp
 install-sh
 ltmain.sh
 missing
+config.h
+config.h.in~
+config.log
+config.status
+libtool
+stamp-h1
+src/ahp
