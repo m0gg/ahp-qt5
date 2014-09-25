@@ -1,0 +1,11 @@
+*.in
+*.pro.user
+/aclocal.m4
+/autom4te.cache
+/compile
+/config.guess
+config.sub
+depcomp
+install-sh
+ltmain.sh
+missing
