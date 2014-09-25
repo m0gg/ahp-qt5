@@ -11,6 +11,6 @@ CONFIG += staticlib link_pkgconfig
 PKGCONFIG +=
 
 # Input
-HEADERS += ahp.h
-FORMS += ahp.ui
-SOURCES += ahp.cpp main.cpp
+HEADERS += ahpMainWindow.h
+FORMS += ahpMainWindow.ui
+SOURCES += ahpMainWindow.cpp

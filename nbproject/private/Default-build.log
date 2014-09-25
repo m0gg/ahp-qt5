@@ -1,0 +1,15 @@
+/usr/bin/make  all-recursive
+make[1]: Betrete Verzeichnis '/home/marcel/arbeitskopien/ahp'
+Making all in ui
+make[2]: Betrete Verzeichnis '/home/marcel/arbeitskopien/ahp/ui'
+/usr/lib/x86_64-linux-gnu/qt5/bin/uic ahp.ui -o ui_ahp.h
+g++ -c -m64 -pipe -O2 -fPIC -Wall -W -D_REENTRANT -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I. -I../lib -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I. -o ahp.o ahp.cpp
+ahp.cpp:3:19: fatal error: stdip.h: Datei oder Verzeichnis nicht gefunden
+ #include <stdip.h>
+                   ^
+compilation terminated.
+make[2]: *** [ahp.o] Fehler 1
+make[2]: Verlasse Verzeichnis '/home/marcel/arbeitskopien/ahp/ui'
+make[1]: *** [all-recursive] Fehler 1
+make[1]: Verlasse Verzeichnis '/home/marcel/arbeitskopien/ahp'
+make: *** [all] Fehler 2

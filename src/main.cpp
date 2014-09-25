@@ -1,9 +1,9 @@
-#include "ui/ahp.h"
+#include "ui/ahpMainWindow.h"
 #include <QApplication>
 
 int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
-    AHP w;
+    AHPMainWindow w;
     w.show();
 
     return a.exec();
