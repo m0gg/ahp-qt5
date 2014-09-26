@@ -11,6 +11,6 @@ CONFIG += staticlib link_pkgconfig
 PKGCONFIG +=
 
 # Input
-HEADERS += ahpMainWindow.h
+HEADERS += ahpMainWindow.h CriterionListModel.h CriterionRateItem.h
 FORMS += ahpMainWindow.ui
-SOURCES += ahpMainWindow.cpp
+SOURCES += ahpMainWindow.cpp CriterionListModel.cpp CriterionRateItem.cpp

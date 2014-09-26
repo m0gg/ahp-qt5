@@ -2,6 +2,7 @@
 #define	CRITERION_H
 
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -17,7 +18,20 @@ public:
   
 private:
   string name;
+};
+
+
+class CriterionMat {
+public:
+  CriterionMat();
+  void push_back();
+  vector<vector<double>*> getData() const;
   
+  void set(unsigned int, unsigned int, double);
+  double get(unsigned int, unsigned int);
+  
+private:
+  vector< vector<double>* > data;
 };
 
 #endif /* CRITERION_H */
