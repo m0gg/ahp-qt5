@@ -75,7 +75,7 @@
    <sender>cAddSubmit</sender>
    <signal>clicked()</signal>
    <receiver>AHPMainWindow</receiver>
-   <slot>kAddSubmitTriggered()</slot>
+   <slot>cAddSubmitTriggered()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>849</x>
@@ -89,6 +89,6 @@
   </connection>
  </connections>
  <slots>
-  <slot>kAddSubmitTriggered()</slot>
+  <slot>cAddSubmitTriggered()</slot>
  </slots>
 </ui>
