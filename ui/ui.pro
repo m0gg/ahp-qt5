@@ -14,3 +14,6 @@ PKGCONFIG +=
 HEADERS += ahpMainWindow.h CriterionListModel.h CriterionRateItem.h
 FORMS += ahpMainWindow.ui
 SOURCES += ahpMainWindow.cpp CriterionListModel.cpp CriterionRateItem.cpp
+
+QMAKE_CXXFLAGS += -g3 -gdwarf-2
+CONFIG += debug console

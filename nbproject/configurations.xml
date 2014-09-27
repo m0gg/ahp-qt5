@@ -40,8 +40,8 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <flagsDictionary>
-        <element flagsID="0" commonFlags="-fPIC -O2"/>
-        <element flagsID="1" commonFlags="-m64 -O2 -fPIC"/>
+        <element flagsID="0" commonFlags="-fPIC"/>
+        <element flagsID="1" commonFlags="-m64 -fPIC"/>
       </flagsDictionary>
       <codeAssistance>
       </codeAssistance>
@@ -97,27 +97,28 @@
           <preprocessorList>
             <Elem>QT_CORE_LIB</Elem>
             <Elem>QT_GUI_LIB</Elem>
-            <Elem>QT_NO_DEBUG</Elem>
             <Elem>QT_WIDGETS_LIB</Elem>
             <Elem>_REENTRANT</Elem>
           </preprocessorList>
         </ccTool>
       </folder>
-      <item path="lib/Criterion.cpp" ex="false" tool="1" flavor2="0">
+      <item path="lib/Criterion.cpp" ex="false" tool="1" flavor2="4">
         <ccTool flags="0">
         </ccTool>
       </item>
-      <item path="lib/libahp.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
+      <item path="lib/libahp.cpp" ex="false" tool="1" flavor2="4">
         <ccTool flags="0">
         </ccTool>
       </item>
-      <item path="ui/CriterionListModel.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/main.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="ui/CriterionListModel.cpp" ex="false" tool="1" flavor2="4">
         <ccTool flags="1">
         </ccTool>
       </item>
-      <item path="ui/CriterionRateItem.cpp" ex="false" tool="1" flavor2="0">
+      <item path="ui/CriterionRateItem.cpp" ex="false" tool="1" flavor2="4">
         <ccTool flags="1">
         </ccTool>
       </item>
@@ -125,17 +126,17 @@
         <ccTool flags="1">
         </ccTool>
       </item>
-      <item path="ui/moc_CriterionListModel.cpp" ex="false" tool="1" flavor2="0">
+      <item path="ui/moc_CriterionListModel.cpp" ex="false" tool="1" flavor2="4">
         <ccTool flags="1">
         </ccTool>
       </item>
-      <item path="ui/moc_CriterionRateItem.cpp" ex="false" tool="1" flavor2="0">
+      <item path="ui/moc_CriterionRateItem.cpp" ex="false" tool="1" flavor2="4">
         <ccTool flags="1">
         </ccTool>
       </item>
-      <item path="ui/moc_ahp.cpp" ex="false" tool="1" flavor2="4">
-      </item>
-      <item path="ui/moc_ahpMainWindow.cpp" ex="false" tool="1" flavor2="0">
+      <item path="ui/moc_ahpMainWindow.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool flags="1">
+        </ccTool>
       </item>
     </conf>
   </confs>

@@ -4,6 +4,12 @@
     <df root="." name="0">
       <df name="autom4te.cache">
       </df>
+      <df name="build-ui-Desktop-Debug">
+        <in>moc_CriterionListModel.cpp</in>
+        <in>moc_CriterionRateItem.cpp</in>
+        <in>moc_ahpMainWindow.cpp</in>
+        <in>ui_ahpMainWindow.h</in>
+      </df>
       <df name="lib">
         <in>Criterion.cpp</in>
         <in>Criterion.h</in>
@@ -54,6 +60,8 @@
         <gdb_interceptlist>
           <gdbinterceptoptions gdb_all="false" gdb_unhandled="true" gdb_unexpected="true"/>
         </gdb_interceptlist>
+        <gdb_signals>
+        </gdb_signals>
         <gdb_options>
           <DebugOptions>
           </DebugOptions>

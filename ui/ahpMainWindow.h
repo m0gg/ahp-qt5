@@ -2,6 +2,7 @@
 #define AHPMAINWINDOW_H
 
 #include <QtWidgets/QMainWindow>
+#include <QFileDialog>
 #include "libahp.h"
 
 #include "CriterionListModel.h"
@@ -29,6 +30,10 @@ signals:
 private slots:
   void cAddSubmitTriggered();
   void cListChangedReact();
+  void cSaveFile();
+  void cLoadFile();
+  void cSaveFileTo(QString);
+  void cLoadFileFrom(QString);
   
   
 private:
