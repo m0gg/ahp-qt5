@@ -1,6 +1,9 @@
 #include <sstream>
+#include <fstream>
 #include <string.h>
+#include <iostream>
 #include <iterator>
+#include <stdlib.h> 
 
 #include "Criterion.h"
 
@@ -76,14 +79,45 @@ void CriterionMat::set(unsigned int row, unsigned int col, double val) {
 CriterionSet::CriterionSet(vector<Criterion*> *criteria, CriterionMat* criteriaMat) : criteria(criteria), criteriaMat(criteriaMat) {
 }
 
-CriterionSet::CriterionSet(string path) {
-  FILE *f = fopen(path.c_str(), "rb");
-  if(f != NULL) {
-    
-    fclose(f);
+void tokenize(const string& str, vector<string>& tokens, const string& delimiters = " ") {
+  // Skip delimiters at beginning.
+  string::size_type lastPos = str.find_first_not_of(delimiters, 0);
+  // Find first "non-delimiter".
+  string::size_type pos     = str.find_first_of(delimiters, lastPos);
+  
+  while (string::npos != pos || string::npos != lastPos)
+  {
+    // Found a token, add it to the vector.
+    tokens.push_back(str.substr(lastPos, pos - lastPos));
+    // Skip delimiters.  Note the "not_of"
+    lastPos = str.find_first_not_of(delimiters, pos);
+    // Find next "non-delimiter"
+    pos = str.find_first_of(delimiters, lastPos);
   }
 }
 
+CriterionSet::CriterionSet(string path) {
+  ifstream fis(path.c_str());
+  string buf;
+  if(fis.is_open()) {
+    vector<string> tokens;
+    this->criteria = new vector<Criterion*>();
+    this->criteriaMat = new CriterionMat();
+    while(getline(fis, buf)) {
+      tokenize(buf, tokens, ";");
+    }
+    int i, criteria_count = atoi(tokens[0].c_str());
+    for(i = 1; i <= criteria_count; i++) {
+      this->criteria->push_back(new Criterion(tokens[i]));
+      this->criteriaMat->push_back();
+    }
+    for(int j = 0; j < criteria_count; j++) {
+      for(int k = 0; k < criteria_count; k++) {
+        this->criteriaMat->set(j, k, atof(tokens[i++].c_str()));
+      }
+    }
+  }
+}
 
 void CriterionSet::exportSet(string path) {
   string outStruct = getExport();

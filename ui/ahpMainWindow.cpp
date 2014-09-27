@@ -36,7 +36,7 @@ void AHPMainWindow::cSaveFile() {
 
 void AHPMainWindow::cLoadFile() {
   QString path = QFileDialog::getOpenFileName(this, QString("Datei laden ..."), NULL, NULL);
-  
+  cLoadFileFrom(path);
 }
 
 void AHPMainWindow::cSaveFileTo(QString path) {
