@@ -7,6 +7,25 @@
 
 using namespace std;
 
+class Mat {
+public:
+  Mat();
+  
+  void set(unsigned int row, unsigned int col, double val);
+  double get(unsigned int row, unsigned int col);
+  
+  vector<double> getNormalizedEigenvalues();
+  
+  Mat operator*(Mat& right);
+  
+  void push_back();
+  
+  vector< vector<double> > getData() const;
+  
+private:
+  vector< vector<double> > data;
+};
+
 class Criterion {
 public:
   Criterion();
@@ -29,16 +48,16 @@ class CriterionMat {
 public:
   CriterionMat();
   void push_back();
-  vector< vector<double> > getData() const;
+  Mat getData() const;
   
-  void set(unsigned int, unsigned int, double);
-  double get(unsigned int, unsigned int);
+  void set(unsigned int row, unsigned int col, double val);
+  double get(unsigned int row, unsigned int col);
   
   void serialize(ostringstream *os);
   static CriterionMat deserialize(string data);
   
 private:
-  vector< vector<double> > data;
+  Mat data;
 };
 
 class CriterionSet {

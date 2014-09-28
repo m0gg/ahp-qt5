@@ -25,7 +25,8 @@ public:
   void setCriteriaMat(CriterionMat* criteriaMat);
   CriterionMat* getCriteriaMat() const;
   
-//signals:
+signals:
+  void dataChanged();
 };
 
 #endif	/* CRITERIONLISTMODEL_H */

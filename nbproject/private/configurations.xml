@@ -24,10 +24,13 @@
         <in>CriterionListModel.h</in>
         <in>CriterionRateItem.cpp</in>
         <in>CriterionRateItem.h</in>
+        <in>CriterionRatingModel.cpp</in>
+        <in>CriterionRatingModel.h</in>
         <in>ahpMainWindow.cpp</in>
         <in>ahpMainWindow.h</in>
         <in>moc_CriterionListModel.cpp</in>
         <in>moc_CriterionRateItem.cpp</in>
+        <in>moc_CriterionRatingModel.cpp</in>
         <in>moc_ahpMainWindow.cpp</in>
         <in>ui_ahpMainWindow.h</in>
       </df>

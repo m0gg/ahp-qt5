@@ -50,6 +50,7 @@ bool CriterionListModel::setData(const QModelIndex& index, const QVariant& value
       this->criteriaMat->set(index.column(), index.row(), 1.0/value.toDouble());
     }
   }
+  emit dataChanged();
   return true;
 }
 

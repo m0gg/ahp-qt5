@@ -7,6 +7,7 @@
 
 #include "CriterionListModel.h"
 #include "CriterionRateItem.h"
+#include "CriterionRatingModel.h"
 
 using namespace std;
 
@@ -26,10 +27,12 @@ public:
   
 signals:
   void cListChanged();
+  void cListValueChanged();
   
 private slots:
   void cAddSubmitTriggered();
   void cListChangedReact();
+  void cListValueReact();
   void cSaveFile();
   void cLoadFile();
   void cSaveFileTo(QString);
@@ -41,6 +44,7 @@ private:
   vector<Criterion*> criteria;
   CriterionMat criteriaMat;
   CriterionListModel *criteriaModel;
+  CriterionRatingModel *criteriaRatingModel;
 };
 
 #endif // AHPMAINWINDOW_H

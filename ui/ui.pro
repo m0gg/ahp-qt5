@@ -11,9 +11,9 @@ CONFIG += staticlib link_pkgconfig
 PKGCONFIG +=
 
 # Input
-HEADERS += ahpMainWindow.h CriterionListModel.h CriterionRateItem.h
+HEADERS += ahpMainWindow.h CriterionListModel.h CriterionRateItem.h CriterionRatingModel.h
 FORMS += ahpMainWindow.ui
-SOURCES += ahpMainWindow.cpp CriterionListModel.cpp CriterionRateItem.cpp
+SOURCES += ahpMainWindow.cpp CriterionListModel.cpp CriterionRateItem.cpp CriterionRatingModel.cpp
 
 QMAKE_CXXFLAGS += -g3 -gdwarf-2
 CONFIG += debug console

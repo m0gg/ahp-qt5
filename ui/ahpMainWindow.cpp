@@ -1,15 +1,16 @@
 #include "ahpMainWindow.h"
 #include "ui_ahpMainWindow.h"
-#include <QDebug>
 
 AHPMainWindow::AHPMainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::AHPMainWindow) {
   ui->setupUi(this);
   CriterionRateItem *delegate = new CriterionRateItem(parent);
   ui->cTableView->setItemDelegate(delegate);
-  this->criteriaModel = new CriterionListModel(NULL);
+  this->criteriaModel = new CriterionListModel(this);
+  this->criteriaRatingModel = new CriterionRatingModel(this);
   this->criteriaModel->setCriteria(&this->criteria);
   this->criteriaModel->setCriteriaMat(&this->criteriaMat);
   QObject::connect(this, SIGNAL(cListChanged()), this, SLOT(cListChangedReact()));
+  QObject::connect(this->criteriaModel, SIGNAL(dataChanged()), this, SLOT(cListValueReact()));
 }
 
 AHPMainWindow::~AHPMainWindow() {
@@ -29,6 +30,15 @@ void AHPMainWindow::cListChangedReact() {
   ui->cTableView->show();
 }
 
+void AHPMainWindow::cListValueReact() {
+  Mat x = this->criteriaMat.getData();
+  vector<double> y = (x*x*x*x).getNormalizedEigenvalues();
+  this->criteriaRatingModel->setRatings(y);
+  ui->cValueTable->setModel(NULL);
+  ui->cValueTable->setModel(this->criteriaRatingModel);
+  ui->cValueTable->show();
+}
+
 void AHPMainWindow::cSaveFile() {
   QString path = QFileDialog::getOpenFileName(this, QString("Speichern unter ..."), NULL, QString("data-file (*.dat)"));
   cSaveFileTo(path);
@@ -37,6 +47,7 @@ void AHPMainWindow::cSaveFile() {
 void AHPMainWindow::cLoadFile() {
   QString path = QFileDialog::getOpenFileName(this, QString("Datei laden ..."), NULL, NULL);
   cLoadFileFrom(path);
+  cListValueReact();
 }
 
 void AHPMainWindow::cSaveFileTo(QString path) {
