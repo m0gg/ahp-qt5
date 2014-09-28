@@ -15,7 +15,7 @@ QWidget* CriterionRateItem::createEditor(QWidget* parent, const QStyleOptionView
 void CriterionRateItem::setEditorData(QWidget* editor, const QModelIndex& index) const {
   QDoubleSpinBox *box = static_cast<QDoubleSpinBox*>(editor);
   CriterionListModel *model = (CriterionListModel*)(index.model());
-  box->setValue(model->getCriteriaMat()->get(index.row(), index.column()));
+  box->setValue(model->getCriteriaMat().get(index.row(), index.column()));
 }
 
 void CriterionRateItem::setModelData(QWidget* editor, QAbstractItemModel* model, const QModelIndex& index) const {

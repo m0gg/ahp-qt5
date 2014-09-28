@@ -1,7 +1,7 @@
 #include "CriterionRatingModel.h"
 
-CriterionRatingModel::CriterionRatingModel(QObject* parent) : QAbstractTableModel(parent) {
-
+CriterionRatingModel::CriterionRatingModel(QObject *parent) 
+  : QAbstractTableModel(parent) {
 }
 
 int CriterionRatingModel::rowCount(const QModelIndex& /*parent*/) const {

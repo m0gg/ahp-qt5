@@ -11,8 +11,12 @@
         <in>ui_ahpMainWindow.h</in>
       </df>
       <df name="lib">
+        <in>AHPSet.cpp</in>
+        <in>AHPSet.h</in>
         <in>Criterion.cpp</in>
         <in>Criterion.h</in>
+        <in>Mat.cpp</in>
+        <in>Mat.h</in>
         <in>libahp.cpp</in>
         <in>libahp.h</in>
       </df>

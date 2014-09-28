@@ -41,10 +41,9 @@ private slots:
   
 private:
   Ui::AHPMainWindow *ui;
-  vector<Criterion*> criteria;
-  CriterionMat criteriaMat;
-  CriterionListModel *criteriaModel;
-  CriterionRatingModel *criteriaRatingModel;
+  AHPSet set;
+  CriterionListModel criteriaModel;
+  CriterionRatingModel criteriaRatingModel;
 };
 
 #endif // AHPMAINWINDOW_H

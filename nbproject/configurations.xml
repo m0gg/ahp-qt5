@@ -3,7 +3,9 @@
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <df root="." name="0">
       <df name="lib">
+        <in>AHPSet.cpp</in>
         <in>Criterion.cpp</in>
+        <in>Mat.cpp</in>
         <in>libahp.cpp</in>
       </df>
       <df name="src">
@@ -103,11 +105,19 @@
           </preprocessorList>
         </ccTool>
       </folder>
-      <item path="lib/Criterion.cpp" ex="false" tool="1" flavor2="4">
+      <item path="lib/AHPSet.cpp" ex="false" tool="1" flavor2="0">
         <ccTool flags="0">
         </ccTool>
       </item>
-      <item path="lib/libahp.cpp" ex="false" tool="1" flavor2="4">
+      <item path="lib/Criterion.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="lib/Mat.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="lib/libahp.cpp" ex="false" tool="1" flavor2="0">
         <ccTool flags="0">
         </ccTool>
       </item>
@@ -115,11 +125,11 @@
         <ccTool flags="0">
         </ccTool>
       </item>
-      <item path="ui/CriterionListModel.cpp" ex="false" tool="1" flavor2="4">
+      <item path="ui/CriterionListModel.cpp" ex="false" tool="1" flavor2="0">
         <ccTool flags="1">
         </ccTool>
       </item>
-      <item path="ui/CriterionRateItem.cpp" ex="false" tool="1" flavor2="4">
+      <item path="ui/CriterionRateItem.cpp" ex="false" tool="1" flavor2="0">
         <ccTool flags="1">
         </ccTool>
       </item>
@@ -127,15 +137,15 @@
         <ccTool flags="1">
         </ccTool>
       </item>
-      <item path="ui/ahpMainWindow.cpp" ex="false" tool="1" flavor2="4">
+      <item path="ui/ahpMainWindow.cpp" ex="false" tool="1" flavor2="0">
         <ccTool flags="1">
         </ccTool>
       </item>
-      <item path="ui/moc_CriterionListModel.cpp" ex="false" tool="1" flavor2="4">
+      <item path="ui/moc_CriterionListModel.cpp" ex="false" tool="1" flavor2="0">
         <ccTool flags="1">
         </ccTool>
       </item>
-      <item path="ui/moc_CriterionRateItem.cpp" ex="false" tool="1" flavor2="4">
+      <item path="ui/moc_CriterionRateItem.cpp" ex="false" tool="1" flavor2="0">
         <ccTool flags="1">
         </ccTool>
       </item>
@@ -143,7 +153,7 @@
         <ccTool flags="1">
         </ccTool>
       </item>
-      <item path="ui/moc_ahpMainWindow.cpp" ex="false" tool="1" flavor2="4">
+      <item path="ui/moc_ahpMainWindow.cpp" ex="false" tool="1" flavor2="0">
         <ccTool flags="1">
         </ccTool>
       </item>
