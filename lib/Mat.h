@@ -21,10 +21,18 @@ public:
   void push_back_y(unsigned int min_x_size);
   void push_back_x();
   
+  unsigned int getRowCount();
+  unsigned int getColCount();
+  
+  void resize(unsigned int rows, unsigned int cols);
+  void swapRows(unsigned int fIdx, unsigned int sIdx);
+  void swapCols(unsigned int fIdx, unsigned int sIdx);
+  
   vector< vector<double> > getData() const;
   
 private:
   vector< vector<double> > data;
+  unsigned int colCount;
 };
 
 #endif	/* MAT_H */

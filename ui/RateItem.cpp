@@ -5,7 +5,7 @@ RateItem::RateItem(QWidget* parent) : QItemDelegate(parent) {
 
 QWidget* RateItem::createEditor(QWidget* parent, const QStyleOptionViewItem& /*option*/, const QModelIndex& /*index*/) const {
   QDoubleSpinBox *editor = new QDoubleSpinBox(parent);
-  editor->setMinimum(0.01);
+  editor->setMinimum(0);
   editor->setMaximum(100);
   editor->setSingleStep(1);
   
@@ -15,7 +15,7 @@ QWidget* RateItem::createEditor(QWidget* parent, const QStyleOptionViewItem& /*o
 void RateItem::setEditorData(QWidget* editor, const QModelIndex& index) const {
   QDoubleSpinBox *box = static_cast<QDoubleSpinBox*>(editor);
   CriterionListModel *model = (CriterionListModel*)(index.model());
-  box->setValue(model->getCriteriaRating().get(index.row(), index.column()));
+  box->setValue(model->data(index, Qt::EditRole).toDouble());
 }
 
 void RateItem::setModelData(QWidget* editor, QAbstractItemModel* model, const QModelIndex& index) const {

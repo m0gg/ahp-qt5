@@ -8,23 +8,35 @@
 #ifndef ALTERNATIVE_H
 #define	ALTERNATIVE_H
 
-#include <string>
+#include "libahp.h"
+
+#define RATING_SIMPLE  0x01
+#define RATING_COMPLEX 0x10
 
 using namespace std;
 
 class Alternative {
 public:
-  Alternative();
-  Alternative(string name);
-  Alternative(const Alternative& orig);
-  virtual ~Alternative();
+  Alternative(AHPSet& ahpSet);
+  Alternative(string name, AHPSet& ahpSet);
   
   void setName(string name);
   string getName() const;
+
+  int getRatingType() const;
+  vector<double>& getCriteriaRating();
+  
+  void criteriaChanged();
+  
   
 private:
   string name;
-
+  int ratingType;
+  
+  AHPSet& ahpSet;
+  vector<double> criteriaRating;
+  
+  void setupAhpSet();
 };
 
 #endif	/* ALTERNATIVE_H */

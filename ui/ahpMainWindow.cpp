@@ -22,19 +22,14 @@ AHPMainWindow::~AHPMainWindow() {
 }
 
 void AHPMainWindow::cAddSubmitTriggered() {
-  Criterion *newC = new Criterion(ui->cAddName->text().toStdString());
-  this->set.getCriteria().push_back(newC);
-  this->set.getCriteriaRating().push_back();
-  this->set.getAlternativesRating().push_back_x();
+  this->set.addCriterion(ui->cAddName->text().toStdString());
   this->aListChangedReact();
   this->cListChangedReact();
   this->cListValueReact();
 }
 
 void AHPMainWindow::aAddSubmitTriggered() {
-  Alternative *newA = new Alternative(ui->aAddName->text().toStdString());
-  this->set.getAlternatives().push_back(newA);
-  this->set.getAlternativesRating().push_back_y(this->set.getCriteria().size());
+  this->set.addAlternative(ui->aAddName->text().toStdString());
   this->aListChangedReact();
   this->cListChangedReact();
   this->cListValueReact();

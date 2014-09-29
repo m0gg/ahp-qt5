@@ -7,16 +7,16 @@
 
 #include "Criterion.h"
 
-Criterion::Criterion() {
+Criterion::Criterion(AHPSet& ahpSet) : ahpSet(ahpSet) {
+  setupAhpSet();
 }
 
-Criterion::Criterion(string name) : name(name) {
+Criterion::Criterion(string name, AHPSet& ahpSet) 
+  : name(name), ahpSet(ahpSet) {
+  setupAhpSet();
 }
 
-Criterion::Criterion(const Criterion& orig) {
-}
-
-Criterion::~Criterion() {
+void Criterion::setupAhpSet() {
 }
 
 void Criterion::setName(string name) {
@@ -27,10 +27,10 @@ string Criterion::getName() const {
   return name;
 }
 
-void Criterion::serialize(ostringstream *os) {
+/*void Criterion::serialize(ostringstream *os) {
   *os << this->name << ';';
 }
 
 Criterion Criterion::deserialize(string data) {
   return Criterion(data);
-}
+}*/

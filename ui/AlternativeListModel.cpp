@@ -28,18 +28,20 @@ QVariant AlternativeListModel::headerData(int section, Qt::Orientation orientati
 }
 
 QVariant AlternativeListModel::data(const QModelIndex& index, int role) const {
-  if(role == Qt::DisplayRole) {
-    return QString("%1").arg(this->ahpSet.getAlternativesRating().get(index.row(), index.column()));
+  double rating = this->ahpSet.getAlternatives()[index.row()]->getCriteriaRating()[index.column()];
+  switch(role) {
+    case Qt::DisplayRole:
+      return QString("%1").arg(rating);
+      break;
+    case Qt::EditRole:
+      return rating;
   }
   return QVariant();
 }
 
 bool AlternativeListModel::setData(const QModelIndex& index, const QVariant& value, int role) {
   if(role == Qt::EditRole) {
-    this->ahpSet.getAlternativesRating().set(index.row(), index.column(), value.toDouble());
-    if(index.row() != index.column()) {
-      this->ahpSet.getAlternativesRating().set(index.column(), index.row(), 1.0/value.toDouble());
-    }
+    this->ahpSet.getAlternatives()[index.row()]->getCriteriaRating()[index.column()] = value.toDouble();
   }
   //emit dataChanged();
   return true;

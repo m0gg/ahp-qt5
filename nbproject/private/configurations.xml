@@ -30,7 +30,6 @@
         <in>AlternativeListModel.h</in>
         <in>CriterionListModel.cpp</in>
         <in>CriterionListModel.h</in>
-        <in>CriterionRateItem.h</in>
         <in>CriterionRatingModel.cpp</in>
         <in>CriterionRatingModel.h</in>
         <in>RateItem.cpp</in>

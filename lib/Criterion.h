@@ -5,25 +5,26 @@
 #include <string>
 #include <vector>
 
-#include "Mat.h"
+#include "libahp.h"
 
 using namespace std;
 
 class Criterion {
 public:
-  Criterion();
-  Criterion(string name);
-  Criterion(const Criterion& orig);
-  virtual ~Criterion();
+  Criterion(AHPSet& ahpSet);
+  Criterion(string name, AHPSet& ahpSet);
   
   void setName(string name);
   string getName() const;
   
-  void serialize(ostringstream *os);
-  static Criterion deserialize(string data);
-  
+  /*void serialize(ostringstream *os);
+  static Criterion deserialize(string data);*/
+    
 private:
   string name;
+  AHPSet& ahpSet;
+  
+  void setupAhpSet();
 };
 
 #endif /* CRITERION_H */

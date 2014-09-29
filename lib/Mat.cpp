@@ -1,6 +1,8 @@
+#include <math.h>
+#include <iostream>
 #include "Mat.h"
 
-Mat::Mat() {
+Mat::Mat() : colCount(0) {
 }
 
 double Mat::get(unsigned int row, unsigned int col) {
@@ -15,30 +17,36 @@ vector< vector<double> > Mat::getData() const {
   return data;
 }
 
-void Mat::push_back() {
-  push_back_y();
-  push_back_x();
+unsigned int Mat::getRowCount() {
+  return data.size();
 }
 
-void Mat::push_back_y() {
-  vector<double> tmp;
-  for(int i = 0; i < data.size(); i++) {
-    tmp.push_back(1.0);
+unsigned int Mat::getColCount() {
+  return colCount;
+}
+
+void Mat::resize(unsigned int rows, unsigned int cols) {
+  vector<double> tmpl(cols, 1.0);
+  data.resize(rows, tmpl);
+  for(int i = 0; i < getRowCount(); i++) {
+    data[i].resize(cols, 1.0);
   }
-  data.push_back(tmp);
+  this->colCount = cols;
 }
 
-void Mat::push_back_y(unsigned int min_x_size) {
-  vector<double> tmp;
-  for(int i = 0; i < min_x_size; i++) {
-    tmp.push_back(1.0);
-  }
-  data.push_back(tmp);
+template <typename T> void vectorElementSwap(vector<T>& target, unsigned int fIdx, unsigned int sIdx) {
+  T r1 = target[fIdx], r2 = target[sIdx];
+  target.assign(fIdx, r2);
+  target.assign(sIdx, r1);
 }
 
-void Mat::push_back_x() {
+void Mat::swapRows(unsigned int fIdx, unsigned int sIdx) {
+  vectorElementSwap(data, fIdx, sIdx);
+}
+
+void Mat::swapCols(unsigned int fIdx, unsigned int sIdx) {
   for(int i = 0; i < data.size(); i++) {
-    data[i].push_back(1.0);
+    vectorElementSwap(data.at(i), fIdx, sIdx);
   }
 }
 
@@ -60,11 +68,16 @@ vector<double> Mat::getNormalizedEigenvalues() {
 }
 
 Mat Mat::operator*(Mat& right) {
+  if(getRowCount() != getColCount()) throw "Not Matrix-multiplication with different dimensions not implemented!";
   Mat result;
-  for(int i = 0; i < data.size(); i++) result.push_back();
-  for(int row = 0; row < data.size(); row++) {
-    for(int col = 0; col < data.size(); col++) {
-      result.set(row, col, get(row, 0)*right.get(0, col) + get(row, 1)*right.get(1, col) + get(row, 2)*right.get(2, col));
+  result.resize(getRowCount(), getColCount());
+  for(int row = 0; row < getRowCount(); row++) {
+    for(int col = 0; col < getColCount(); col++) {
+      double sum = 0.0;
+      for(int i = 0; i < getColCount(); i++) {
+        sum += get(row, i) * right.get(i, col);
+      }
+      result.set(row, col, sum);
     }
   }
   return result;

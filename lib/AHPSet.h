@@ -17,23 +17,26 @@ public:
   
   void exportSet(string path);
   
-  void setCriteriaRating(Mat criteriaRating);
   Mat& getCriteriaRating();
-  
-  void setAlternativesRating(Mat criteriaRating);
   Mat& getAlternativesRating();
-  
-  void setCriteria(vector<Criterion*> criteria);
+  vector<Alternative*>& getAlternatives();
   vector<Criterion*>& getCriteria();
   
-  void setAlternatives(vector<Alternative*> alternatives);
-  vector<Alternative*>& getAlternatives();
-
+  void addCriterion(string name);
+  void addAlternative(string name);
+  
 private:
+  void resizeRatings();
+  
+  void criterionChanged();
+  void alternativesChanged();
+  
   vector<Criterion*> criteria;
   vector<Alternative*> alternatives;
   Mat criteriaRating;
   Mat alternativesRating;
+  
+  
   
   string getExport();
 };
