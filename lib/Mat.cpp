@@ -16,14 +16,30 @@ vector< vector<double> > Mat::getData() const {
 }
 
 void Mat::push_back() {
-  for(int i = 0; i < data.size(); i++) {
-    data[i].push_back(1.0);
-  }
+  push_back_y();
+  push_back_x();
+}
+
+void Mat::push_back_y() {
   vector<double> tmp;
-  for(int i = 0; i < data.size()+1; i++) {
+  for(int i = 0; i < data.size(); i++) {
     tmp.push_back(1.0);
   }
   data.push_back(tmp);
+}
+
+void Mat::push_back_y(unsigned int min_x_size) {
+  vector<double> tmp;
+  for(int i = 0; i < min_x_size; i++) {
+    tmp.push_back(1.0);
+  }
+  data.push_back(tmp);
+}
+
+void Mat::push_back_x() {
+  for(int i = 0; i < data.size(); i++) {
+    data[i].push_back(1.0);
+  }
 }
 
 vector<double> Mat::getNormalizedEigenvalues() {

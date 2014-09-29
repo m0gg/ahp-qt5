@@ -13,6 +13,8 @@
       <df name="lib">
         <in>AHPSet.cpp</in>
         <in>AHPSet.h</in>
+        <in>Alternative.cpp</in>
+        <in>Alternative.h</in>
         <in>Criterion.cpp</in>
         <in>Criterion.h</in>
         <in>Mat.cpp</in>
@@ -24,18 +26,24 @@
         <in>main.cpp</in>
       </df>
       <df name="ui">
+        <in>AlternativeListModel.cpp</in>
+        <in>AlternativeListModel.h</in>
         <in>CriterionListModel.cpp</in>
         <in>CriterionListModel.h</in>
-        <in>CriterionRateItem.cpp</in>
         <in>CriterionRateItem.h</in>
         <in>CriterionRatingModel.cpp</in>
         <in>CriterionRatingModel.h</in>
+        <in>RateItem.cpp</in>
+        <in>RateItem.h</in>
         <in>ahpMainWindow.cpp</in>
         <in>ahpMainWindow.h</in>
+        <in>moc_AlternativeListModel.cpp</in>
         <in>moc_CriterionListModel.cpp</in>
         <in>moc_CriterionRateItem.cpp</in>
         <in>moc_CriterionRatingModel.cpp</in>
+        <in>moc_RateItem.cpp</in>
         <in>moc_ahpMainWindow.cpp</in>
+        <in>ui_ahpMainWindow.h</in>
       </df>
       <in>config.h</in>
     </df>
@@ -65,6 +73,8 @@
         <gdb_interceptlist>
           <gdbinterceptoptions gdb_all="false" gdb_unhandled="true" gdb_unexpected="true"/>
         </gdb_interceptlist>
+        <gdb_signals>
+        </gdb_signals>
         <gdb_options>
           <DebugOptions>
           </DebugOptions>

@@ -5,9 +5,10 @@
 #include <QFileDialog>
 #include "libahp.h"
 
+#include "RateItem.h"
 #include "CriterionListModel.h"
-#include "CriterionRateItem.h"
 #include "CriterionRatingModel.h"
+#include "AlternativeListModel.h"
 
 using namespace std;
 
@@ -27,11 +28,14 @@ public:
   
 signals:
   void cListChanged();
+  void aListChanged();
   void cListValueChanged();
   
 private slots:
   void cAddSubmitTriggered();
+  void aAddSubmitTriggered();
   void cListChangedReact();
+  void aListChangedReact();
   void cListValueReact();
   void cSaveFile();
   void cLoadFile();
@@ -43,6 +47,7 @@ private:
   Ui::AHPMainWindow *ui;
   AHPSet set;
   CriterionListModel criteriaModel;
+  AlternativeListModel alternativesModel;
   CriterionRatingModel criteriaRatingModel;
 };
 

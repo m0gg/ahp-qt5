@@ -2,6 +2,7 @@
 #define	LIBAHP_H
 
 #include "Criterion.h"  
+#include "Alternative.h"
 #include "Mat.h"
 #include "AHPSet.h"
 

@@ -1,18 +1,19 @@
 #include "ahpMainWindow.h"
 #include "ui_ahpMainWindow.h"
-#include "AHPSet.h"
+#include <QDebug>
 
 AHPMainWindow::AHPMainWindow(QWidget *parent) 
   : QMainWindow(parent), ui(new Ui::AHPMainWindow), 
-    criteriaModel(this->set.getCriteria(), this->set.getCriteriaRating(), this),
+    criteriaModel(this->set, this),
+    alternativesModel(this->set, this), 
     criteriaRatingModel(this) {
   
   ui->setupUi(this);
-  CriterionRateItem *delegate = new CriterionRateItem(parent);
+  RateItem *delegate = new RateItem(parent);
   ui->cTableView->setItemDelegate(delegate);
-  this->criteriaModel.setCriteria(this->set.getCriteria());
-  this->criteriaModel.setCriteriaMat(this->set.getCriteriaRating());
+  ui->aTableView->setItemDelegate(delegate);
   QObject::connect(this, SIGNAL(cListChanged()), this, SLOT(cListChangedReact()));
+  QObject::connect(this, SIGNAL(aListChanged()), this, SLOT(aListChangedReact()));
   QObject::connect(&this->criteriaModel, SIGNAL(dataChanged()), this, SLOT(cListValueReact()));
 }
 
@@ -21,16 +22,35 @@ AHPMainWindow::~AHPMainWindow() {
 }
 
 void AHPMainWindow::cAddSubmitTriggered() {
-  Criterion newC(ui->cAddName->text().toStdString());
+  Criterion *newC = new Criterion(ui->cAddName->text().toStdString());
   this->set.getCriteria().push_back(newC);
   this->set.getCriteriaRating().push_back();
-  this->cListChanged();
+  this->set.getAlternativesRating().push_back_x();
+  this->aListChangedReact();
+  this->cListChangedReact();
+  this->cListValueReact();
 }
+
+void AHPMainWindow::aAddSubmitTriggered() {
+  Alternative *newA = new Alternative(ui->aAddName->text().toStdString());
+  this->set.getAlternatives().push_back(newA);
+  this->set.getAlternativesRating().push_back_y(this->set.getCriteria().size());
+  this->aListChangedReact();
+  this->cListChangedReact();
+  this->cListValueReact();
+}
+
 
 void AHPMainWindow::cListChangedReact() {
   ui->cTableView->setModel(NULL);
   ui->cTableView->setModel(&this->criteriaModel);
   ui->cTableView->show();
+}
+
+void AHPMainWindow::aListChangedReact() {
+  ui->aTableView->setModel(NULL);
+  ui->aTableView->setModel(&this->alternativesModel);
+  ui->aTableView->show();
 }
 
 void AHPMainWindow::cListValueReact() {
@@ -54,7 +74,7 @@ void AHPMainWindow::cLoadFile() {
 }
 
 void AHPMainWindow::cSaveFileTo(QString path) {
-  AHPSet tmp(this->set.getCriteria(), this->set.getCriteriaRating());
+  AHPSet tmp(this->set.getCriteria(), this->set.getAlternatives(), this->set.getCriteriaRating());
   tmp.exportSet(path.toStdString());
 }
 

@@ -2,6 +2,7 @@
 #define	AHPSET_H
 
 #include "Criterion.h"
+#include "Alternative.h"
 #include "Mat.h"
 
 using namespace std;
@@ -10,7 +11,7 @@ class AHPSet {
 public:
   AHPSet();
   AHPSet(const AHPSet& orig);
-  AHPSet(vector<Criterion>& criteria, Mat& criteriaRating);
+  AHPSet(vector<Criterion*>& criteria, vector<Alternative*>& alternatives, Mat& criteriaRating);
   AHPSet(string path);
   virtual ~AHPSet();
   
@@ -19,12 +20,20 @@ public:
   void setCriteriaRating(Mat criteriaRating);
   Mat& getCriteriaRating();
   
-  void setCriteria(vector<Criterion> criteria);
-  vector<Criterion>& getCriteria();
+  void setAlternativesRating(Mat criteriaRating);
+  Mat& getAlternativesRating();
+  
+  void setCriteria(vector<Criterion*> criteria);
+  vector<Criterion*>& getCriteria();
+  
+  void setAlternatives(vector<Alternative*> alternatives);
+  vector<Alternative*>& getAlternatives();
 
 private:
-  vector<Criterion> criteria;
+  vector<Criterion*> criteria;
+  vector<Alternative*> alternatives;
   Mat criteriaRating;
+  Mat alternativesRating;
   
   string getExport();
 };

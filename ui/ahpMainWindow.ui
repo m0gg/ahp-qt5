@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>942</width>
-    <height>446</height>
+    <height>550</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -255,10 +255,27 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>aAddSubmit</sender>
+   <signal>clicked()</signal>
+   <receiver>AHPMainWindow</receiver>
+   <slot>aAddSubmitTriggered()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>873</x>
+     <y>319</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>470</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>cAddSubmitTriggered()</slot>
   <slot>cSaveFile()</slot>
   <slot>cLoadFile()</slot>
+  <slot>aAddSubmitTriggered()</slot>
  </slots>
 </ui>

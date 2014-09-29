@@ -9,10 +9,10 @@
 
 #include "CriterionListModel.h"
 
-class CriterionRateItem : public QItemDelegate {
+class RateItem : public QItemDelegate {
   Q_OBJECT
 public:
-  CriterionRateItem(QWidget *parent = 0);
+  RateItem(QWidget *parent = 0);
   
   QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const;
   void setEditorData(QWidget *editor, const QModelIndex &index) const;

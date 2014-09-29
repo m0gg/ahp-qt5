@@ -9,7 +9,7 @@ int CriterionRatingModel::rowCount(const QModelIndex& /*parent*/) const {
 }
 
 int CriterionRatingModel::columnCount(const QModelIndex& /*parent*/) const {
-  return 1;
+  return this->ratings.size();
 }
 
 Qt::ItemFlags CriterionRatingModel::flags(const QModelIndex& /*index*/) const {

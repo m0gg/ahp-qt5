@@ -12,8 +12,8 @@ AHPSet::AHPSet() {
 AHPSet::AHPSet(const AHPSet& orig) {
 }
 
-AHPSet::AHPSet(vector<Criterion>& criteria, Mat& criteriaRating)
-  : criteria(criteria), criteriaRating(criteriaRating) {
+AHPSet::AHPSet(vector<Criterion*>& criteria, vector<Alternative*>& alternatives, Mat& criteriaRating)
+  : criteria(criteria), alternatives(alternatives), criteriaRating(criteriaRating) {
 }
 
 AHPSet::~AHPSet() {
@@ -27,12 +27,28 @@ Mat& AHPSet::getCriteriaRating() {
   return criteriaRating;
 }
 
-void AHPSet::setCriteria(vector<Criterion> criteria) {
+void AHPSet::setAlternativesRating(Mat criteriaRating) {
+  this->alternativesRating = criteriaRating;
+}
+
+Mat& AHPSet::getAlternativesRating() {
+  return alternativesRating;
+}
+
+void AHPSet::setCriteria(vector<Criterion*> criteria) {
   this->criteria = criteria;
 }
 
-vector<Criterion>& AHPSet::getCriteria() {
+vector<Criterion*>& AHPSet::getCriteria() {
   return criteria;
+}
+
+void AHPSet::setAlternatives(vector<Alternative*> alternatives) {
+  this->alternatives = alternatives;
+}
+
+vector<Alternative*>& AHPSet::getAlternatives() {
+  return alternatives;
 }
 
 void serialize(ostringstream& os, Mat& data) {
@@ -64,7 +80,7 @@ string AHPSet::getExport() {
   ostringstream os;
   os << criteria.size() << ";";
   for(int i = 0; i < criteria.size(); i++) {
-    criteria[i].serialize(&os);
+    criteria[i]->serialize(&os);
   }
   serialize(os, criteriaRating);
   return os.str();
@@ -91,7 +107,7 @@ AHPSet::AHPSet(string path) {
     }
     int i, criteria_count = atoi(tokens[0].c_str());
     for(i = 1; i <= criteria_count; i++) {
-      this->criteria.push_back(Criterion(tokens[i]));
+      this->criteria.push_back(new Criterion(tokens[i]));
       this->criteriaRating.push_back();
     }
     for(int j = 0; j < criteria_count; j++) {
