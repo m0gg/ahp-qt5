@@ -1,7 +1,6 @@
 #include "ahpMainWindow.h"
 #include "ui_ahpMainWindow.h"
 #include <QDebug>
-#include <qt5/QtWidgets/qpushbutton.h>
 
 AHPMainWindow::AHPMainWindow(QWidget *parent) 
 : QMainWindow(parent), ui(new Ui::AHPMainWindow), 

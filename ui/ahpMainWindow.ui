@@ -33,9 +33,39 @@
     <item>
      <widget class="QWidget" name="mainLayout" native="true">
       <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="spacing">
+        <number>2</number>
+       </property>
+       <property name="leftMargin">
+        <number>2</number>
+       </property>
+       <property name="topMargin">
+        <number>2</number>
+       </property>
+       <property name="rightMargin">
+        <number>2</number>
+       </property>
+       <property name="bottomMargin">
+        <number>2</number>
+       </property>
        <item>
         <widget class="QWidget" name="cAddForm" native="true">
          <layout class="QHBoxLayout" name="horizontalLayout">
+          <property name="spacing">
+           <number>1</number>
+          </property>
+          <property name="leftMargin">
+           <number>1</number>
+          </property>
+          <property name="topMargin">
+           <number>1</number>
+          </property>
+          <property name="rightMargin">
+           <number>1</number>
+          </property>
+          <property name="bottomMargin">
+           <number>1</number>
+          </property>
           <item>
            <widget class="QLineEdit" name="cAddName">
             <property name="text">
@@ -62,6 +92,21 @@
           </sizepolicy>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <property name="spacing">
+           <number>1</number>
+          </property>
+          <property name="leftMargin">
+           <number>1</number>
+          </property>
+          <property name="topMargin">
+           <number>1</number>
+          </property>
+          <property name="rightMargin">
+           <number>1</number>
+          </property>
+          <property name="bottomMargin">
+           <number>1</number>
+          </property>
           <item>
            <widget class="QTableView" name="cTableView"/>
           </item>
@@ -87,20 +132,38 @@
        <item>
         <widget class="QWidget" name="verticalWidget" native="true">
          <layout class="QVBoxLayout" name="verticalLayout_3">
+          <property name="spacing">
+           <number>1</number>
+          </property>
+          <property name="leftMargin">
+           <number>1</number>
+          </property>
+          <property name="topMargin">
+           <number>1</number>
+          </property>
+          <property name="rightMargin">
+           <number>1</number>
+          </property>
+          <property name="bottomMargin">
+           <number>1</number>
+          </property>
           <item>
            <widget class="QWidget" name="aAddForm" native="true">
             <layout class="QHBoxLayout" name="horizontalLayout_3">
+             <property name="spacing">
+              <number>1</number>
+             </property>
              <property name="leftMargin">
-              <number>9</number>
+              <number>1</number>
              </property>
              <property name="topMargin">
-              <number>9</number>
+              <number>1</number>
              </property>
              <property name="rightMargin">
-              <number>9</number>
+              <number>1</number>
              </property>
              <property name="bottomMargin">
-              <number>9</number>
+              <number>1</number>
              </property>
              <item>
               <widget class="QLineEdit" name="aAddName">
@@ -125,17 +188,20 @@
        <item>
         <widget class="QWidget" name="aGrid" native="true">
          <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <property name="spacing">
+           <number>1</number>
+          </property>
           <property name="leftMargin">
-           <number>9</number>
+           <number>1</number>
           </property>
           <property name="topMargin">
-           <number>9</number>
+           <number>1</number>
           </property>
           <property name="rightMargin">
-           <number>9</number>
+           <number>1</number>
           </property>
           <property name="bottomMargin">
-           <number>9</number>
+           <number>1</number>
           </property>
           <item>
            <widget class="QTableView" name="aTableView"/>
@@ -165,6 +231,9 @@
    </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>0</x>

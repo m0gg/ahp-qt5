@@ -7,7 +7,7 @@ QT = core gui widgets
 TEMPLATE = lib
 INCLUDEPATH += ../lib/
 
-CONFIG += staticlib link_pkgconfig
+CONFIG += staticlib static link_pkgconfig
 PKGCONFIG +=
 
 # Input

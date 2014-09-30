@@ -1,0 +1,15 @@
+#!/bin/sh
+make distclean
+cd ui
+QMAKE_INCDIR_QT=/home/marcel/tmp/MinGW/include
+QMAKE_LIBDIR_QT=/home/marcel/tmp/MinGW/lib
+qmake
+cd ..
+CC=/usr/bin/x86_64-w64-mingw32-gcc
+CXX=/usr/bin/x86_64-w64-mingw32-g++
+MINGWFLAGS="-mwin32 -mconsole"
+CFLAGS="$MINGWFLAGS" # -L/home/marcel/tmp/MinGW/lib"
+CXXFLAGS="$MINGWFLAGS" # -L/home/marcel/tmp/MinGW/lib"
+./configure CC=$CC CXX=$CXX --target=i686-w64-mingw32 --host=x86_64-linux-gnu
+echo make CC=$CC CXX=$CXX CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" -j9
+make CC=$CC CXX=$CXX CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS"
