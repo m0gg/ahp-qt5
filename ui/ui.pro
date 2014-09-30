@@ -15,7 +15,8 @@ HEADERS += ahpMainWindow.h \
            RateItem.h \
            CriterionListModel.h \
            CriterionRatingModel.h \
-           AlternativeListModel.h
+           AlternativeListModel.h \
+           AlternativeRatingModel.h 
 
 FORMS += ahpMainWindow.ui
 
@@ -23,7 +24,8 @@ SOURCES += ahpMainWindow.cpp \
            RateItem.cpp \
            CriterionListModel.cpp \
            CriterionRatingModel.cpp \
-           AlternativeListModel.cpp
+           AlternativeListModel.cpp \
+           AlternativeRatingModel.cpp 
 
 QMAKE_CXXFLAGS += -g3 -gdwarf-2
 CONFIG += debug console

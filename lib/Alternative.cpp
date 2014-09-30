@@ -24,7 +24,7 @@ int Alternative::getRatingType() const {
 void Alternative::criteriaChanged() {
   switch(this->ratingType) {
     case RATING_SIMPLE:
-      this->criteriaRating.resize(this->ahpSet.getCriteria().size());
+      this->criteriaRating.resize(this->ahpSet.getCriteria().size(), 1.0);
       break;
     case RATING_COMPLEX:
       throw "now implemented";

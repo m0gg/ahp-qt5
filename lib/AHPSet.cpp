@@ -23,9 +23,9 @@ Mat& AHPSet::getCriteriaRating() {
   return criteriaRating;
 }
 
-Mat& AHPSet::getAlternativesRating() {
+/*Mat& AHPSet::getAlternativesRating() {
   return alternativesRating;
-}
+}*/
 
 vector<Alternative*>& AHPSet::getAlternatives() {
   return alternatives;
@@ -42,7 +42,7 @@ void AHPSet::addCriterion(string name) {
 
 void AHPSet::criterionChanged() {
   resizeRatings();
-  recalcCriterionRatings();
+  recalcCriteriaRatings();
 }
 
 void AHPSet::addAlternative(string name) {
@@ -52,6 +52,10 @@ void AHPSet::addAlternative(string name) {
 
 vector<double> AHPSet::getCriteriaRatings() const {
   return criteriaRatings;
+}
+
+vector<double> AHPSet::getAlternativesRatings() const {
+  return alternativesRatings;
 }
 
 void AHPSet::alternativesChanged() {
@@ -67,12 +71,30 @@ void AHPSet::resizeRatings() {
   }
 }
 
-void AHPSet::recalcCriterionRatings() {
+void AHPSet::recalcCriteriaRatings() {
   this->criteriaRatings = (criteriaRating*criteriaRating*
       criteriaRating*
       criteriaRating).getNormalizedEigenvalues();
 }
 
+void AHPSet::recalcAlternativesRatings() {
+  recalcCriteriaRatings();
+  
+  if(alternatives.size() < 1 || criteria.size() < 1) 
+    return;
+  Mat x;
+  x.resize(alternatives.size(), criteria.size());
+  for(int col = 0; col < criteria.size(); col++) {
+    double sum = 0;
+    for(int row = 0; row < alternatives.size(); row++) {
+      sum += alternatives[row]->getCriteriaRating()[col];
+    }
+    for(int row = 0; row < alternatives.size(); row++) {
+      x.set(row, col, alternatives[row]->getCriteriaRating()[col]/sum);
+    }
+  }
+  this->alternativesRatings = x*criteriaRatings;
+}
 
 void serialize(ostringstream& os, Mat& data) {
   int size = data.getData().size();

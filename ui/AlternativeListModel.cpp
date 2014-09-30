@@ -42,8 +42,10 @@ QVariant AlternativeListModel::data(const QModelIndex& index, int role) const {
 bool AlternativeListModel::setData(const QModelIndex& index, const QVariant& value, int role) {
   if(role == Qt::EditRole) {
     this->ahpSet.getAlternatives()[index.row()]->getCriteriaRating()[index.column()] = value.toDouble();
+    
+    QModelIndex t = createIndex(index.column(), index.row());
+    emit dataChanged(t, t);
   }
-  //emit dataChanged();
   return true;
 }
 

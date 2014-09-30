@@ -4,10 +4,11 @@
 #include <qt5/QtWidgets/qpushbutton.h>
 
 AHPMainWindow::AHPMainWindow(QWidget *parent) 
-  : QMainWindow(parent), ui(new Ui::AHPMainWindow), 
+: QMainWindow(parent), ui(new Ui::AHPMainWindow), 
     criteriaModel(this->set, this),
+    criteriaRatingModel(this->set, this),
     alternativesModel(this->set, this), 
-    criteriaRatingModel(this->set, this) {
+    alternativesRatingModel(this->set, this) {
   
   ui->setupUi(this);
   RateItem *delegate = new RateItem(parent);
@@ -16,6 +17,8 @@ AHPMainWindow::AHPMainWindow(QWidget *parent)
   
   ui->cTableView->setModel(&this->criteriaModel);
   ui->cValueTable->setModel(&this->criteriaRatingModel);
+  ui->aTableView->setModel(&this->alternativesModel);
+  ui->aValueTable->setModel(&this->alternativesRatingModel);
   
   QObject::connect(this, &AHPMainWindow::cListChanged, this, &AHPMainWindow::cListChangedReact);
   QObject::connect(this, &AHPMainWindow::aListChanged, this, &AHPMainWindow::aListChangedReact);
@@ -39,7 +42,7 @@ void AHPMainWindow::aAddSubmitTriggered() {
 
 
 void AHPMainWindow::cListChangedReact() {
-  this->set.recalcCriterionRatings();
+  this->set.recalcCriteriaRatings();
   ui->cTableView->setModel(NULL);
   ui->cValueTable->setModel(NULL);
   ui->cTableView->setModel(&this->criteriaModel);
@@ -49,8 +52,11 @@ void AHPMainWindow::cListChangedReact() {
 }
 
 void AHPMainWindow::aListChangedReact() {
+  this->set.recalcAlternativesRatings();
   ui->aTableView->setModel(NULL);
+  ui->aValueTable->setModel(NULL);
   ui->aTableView->setModel(&this->alternativesModel);
+  ui->aValueTable->setModel(&this->alternativesRatingModel);
 }
 
 void AHPMainWindow::cSaveFile() {

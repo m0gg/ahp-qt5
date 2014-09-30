@@ -5,7 +5,7 @@ RateItem::RateItem(QWidget* parent) : QItemDelegate(parent) {
 
 QWidget* RateItem::createEditor(QWidget* parent, const QStyleOptionViewItem& /*option*/, const QModelIndex& /*index*/) const {
   QDoubleSpinBox *editor = new QDoubleSpinBox(parent);
-  editor->setMinimum(0);
+  editor->setMinimum(0.01);
   editor->setMaximum(100);
   editor->setSingleStep(1);
   

@@ -22,11 +22,13 @@ public:
   vector<Alternative*>& getAlternatives();
   vector<Criterion*>& getCriteria();
   vector<double> getCriteriaRatings() const;
+  vector<double> getAlternativesRatings() const;
   
   void addCriterion(string name);
   void addAlternative(string name);
 
-  void recalcCriterionRatings();
+  void recalcCriteriaRatings();
+  void recalcAlternativesRatings();
   
 private:
   void resizeRatings();
@@ -37,8 +39,9 @@ private:
   vector<Criterion*> criteria;
   vector<Alternative*> alternatives;
   Mat criteriaRating;
-  Mat alternativesRating;
+  //Mat alternativesRating;
   vector<double> criteriaRatings;
+  vector<double> alternativesRatings;
   
   
   string getExport();

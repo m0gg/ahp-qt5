@@ -28,6 +28,8 @@
       <df name="ui">
         <in>AlternativeListModel.cpp</in>
         <in>AlternativeListModel.h</in>
+        <in>AlternativeRatingModel.cpp</in>
+        <in>AlternativeRatingModel.h</in>
         <in>CriterionListModel.cpp</in>
         <in>CriterionListModel.h</in>
         <in>CriterionRatingModel.cpp</in>
@@ -37,6 +39,7 @@
         <in>ahpMainWindow.cpp</in>
         <in>ahpMainWindow.h</in>
         <in>moc_AlternativeListModel.cpp</in>
+        <in>moc_AlternativeRatingModel.cpp</in>
         <in>moc_CriterionListModel.cpp</in>
         <in>moc_CriterionRateItem.cpp</in>
         <in>moc_CriterionRatingModel.cpp</in>

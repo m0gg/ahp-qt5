@@ -14,11 +14,13 @@
       </df>
       <df name="ui">
         <in>AlternativeListModel.cpp</in>
+        <in>AlternativeRatingModel.cpp</in>
         <in>CriterionListModel.cpp</in>
         <in>CriterionRatingModel.cpp</in>
         <in>RateItem.cpp</in>
         <in>ahpMainWindow.cpp</in>
         <in>moc_AlternativeListModel.cpp</in>
+        <in>moc_AlternativeRatingModel.cpp</in>
         <in>moc_CriterionListModel.cpp</in>
         <in>moc_CriterionRateItem.cpp</in>
         <in>moc_CriterionRatingModel.cpp</in>
@@ -46,6 +48,10 @@
         <dependencyChecking>false</dependencyChecking>
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
+      <flagsDictionary>
+        <element flagsID="0" commonFlags="-fPIC"/>
+        <element flagsID="1" commonFlags="-m64 -fPIC"/>
+      </flagsDictionary>
       <codeAssistance>
       </codeAssistance>
       <makefileType>
@@ -106,38 +112,76 @@
         </ccTool>
       </folder>
       <item path="lib/AHPSet.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
       </item>
       <item path="lib/Alternative.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
       </item>
       <item path="lib/Criterion.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
       </item>
       <item path="lib/Mat.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
       </item>
       <item path="lib/libahp.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
       </item>
       <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
       </item>
       <item path="ui/AlternativeListModel.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="1">
+        </ccTool>
+      </item>
+      <item path="ui/AlternativeRatingModel.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="1">
+        </ccTool>
       </item>
       <item path="ui/CriterionListModel.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="1">
+        </ccTool>
       </item>
       <item path="ui/CriterionRatingModel.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="1">
+        </ccTool>
       </item>
       <item path="ui/RateItem.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="1">
+        </ccTool>
       </item>
       <item path="ui/ahpMainWindow.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="1">
+        </ccTool>
       </item>
       <item path="ui/moc_AlternativeListModel.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="1">
+        </ccTool>
+      </item>
+      <item path="ui/moc_AlternativeRatingModel.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="1">
+        </ccTool>
       </item>
       <item path="ui/moc_CriterionListModel.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="ui/moc_CriterionRateItem.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool flags="1">
+        </ccTool>
       </item>
       <item path="ui/moc_CriterionRatingModel.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="1">
+        </ccTool>
       </item>
       <item path="ui/moc_RateItem.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="1">
+        </ccTool>
       </item>
       <item path="ui/moc_ahpMainWindow.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="1">
+        </ccTool>
       </item>
     </conf>
   </confs>

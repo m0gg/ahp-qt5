@@ -13,7 +13,7 @@ void Mat::set(unsigned int row, unsigned int col, double val) {
   this->data.at(row).at(col) = val;
 }
 
-vector< vector<double> > Mat::getData() const {
+vector< vector<double> >& Mat::getData() {
   return data;
 }
 
@@ -67,8 +67,17 @@ vector<double> Mat::getNormalizedEigenvalues() {
   return result;
 }
 
+vector<double> Mat::getCol(unsigned int idx) {
+  vector<double> result(getRowCount());
+  for(int i = 0; i < getRowCount(); i++) {
+    result[i] = get(i, idx);
+  }
+  return result;
+}
+
+
 Mat Mat::operator*(Mat& right) {
-  if(getRowCount() != getColCount()) throw "Not Matrix-multiplication with different dimensions not implemented!";
+  if(getRowCount() != getColCount()) throw "Matrix-multiplication with different dimensions not implemented!";
   Mat result;
   result.resize(getRowCount(), getColCount());
   for(int row = 0; row < getRowCount(); row++) {
@@ -78,6 +87,18 @@ Mat Mat::operator*(Mat& right) {
         sum += get(row, i) * right.get(i, col);
       }
       result.set(row, col, sum);
+    }
+  }
+  return result;
+}
+
+vector<double> Mat::operator*(vector<double>& right) {
+  if(getColCount() != right.size()) throw "Matrix-multiplication with different dimensions not implemented!";
+  vector<double> result(getRowCount(), 0.0);
+  
+  for(int row = 0; row < getRowCount(); row++) {
+    for(int col = 0; col < getColCount(); col++) {
+      result[row] += get(row, col) * right[col];
     }
   }
   return result;

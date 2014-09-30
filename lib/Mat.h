@@ -14,7 +14,10 @@ public:
   
   vector<double> getNormalizedEigenvalues();
   
+  vector<double> getCol(unsigned int idx);
+  
   Mat operator*(Mat& right);
+  vector<double> operator*(vector<double>& right);
   
   unsigned int getRowCount();
   unsigned int getColCount();
@@ -23,7 +26,7 @@ public:
   void swapRows(unsigned int fIdx, unsigned int sIdx);
   void swapCols(unsigned int fIdx, unsigned int sIdx);
   
-  vector< vector<double> > getData() const;
+  vector< vector<double> >& getData();
   
 private:
   vector< vector<double> > data;

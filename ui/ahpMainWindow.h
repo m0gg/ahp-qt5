@@ -9,6 +9,7 @@
 #include "CriterionListModel.h"
 #include "CriterionRatingModel.h"
 #include "AlternativeListModel.h"
+#include "AlternativeRatingModel.h"
 
 using namespace std;
 
@@ -46,8 +47,9 @@ private:
   Ui::AHPMainWindow *ui;
   AHPSet set;
   CriterionListModel criteriaModel;
-  AlternativeListModel alternativesModel;
   CriterionRatingModel criteriaRatingModel;
+  AlternativeListModel alternativesModel;
+  AlternativeRatingModel alternativesRatingModel;
 };
 
 #endif // AHPMAINWINDOW_H
