@@ -21,9 +21,6 @@ public:
   
   vector<Criterion*>& getCriteria();
   Mat& getCriteriaRating();
-  
-signals:
-  void dataChanged();
 };
 
 #endif	/* CRITERIONLISTMODEL_H */

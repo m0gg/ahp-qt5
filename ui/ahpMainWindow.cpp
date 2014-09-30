@@ -1,20 +1,26 @@
 #include "ahpMainWindow.h"
 #include "ui_ahpMainWindow.h"
 #include <QDebug>
+#include <qt5/QtWidgets/qpushbutton.h>
 
 AHPMainWindow::AHPMainWindow(QWidget *parent) 
   : QMainWindow(parent), ui(new Ui::AHPMainWindow), 
     criteriaModel(this->set, this),
     alternativesModel(this->set, this), 
-    criteriaRatingModel(this) {
+    criteriaRatingModel(this->set, this) {
   
   ui->setupUi(this);
   RateItem *delegate = new RateItem(parent);
   ui->cTableView->setItemDelegate(delegate);
   ui->aTableView->setItemDelegate(delegate);
-  QObject::connect(this, SIGNAL(cListChanged()), this, SLOT(cListChangedReact()));
-  QObject::connect(this, SIGNAL(aListChanged()), this, SLOT(aListChangedReact()));
-  QObject::connect(&this->criteriaModel, SIGNAL(dataChanged()), this, SLOT(cListValueReact()));
+  
+  ui->cTableView->setModel(&this->criteriaModel);
+  ui->cValueTable->setModel(&this->criteriaRatingModel);
+  
+  QObject::connect(this, &AHPMainWindow::cListChanged, this, &AHPMainWindow::cListChangedReact);
+  QObject::connect(this, &AHPMainWindow::aListChanged, this, &AHPMainWindow::aListChangedReact);
+  QObject::connect(&this->criteriaModel, &CriterionListModel::dataChanged, this, &AHPMainWindow::cListChangedReact);
+  QObject::connect(&this->alternativesModel, &AlternativeListModel::dataChanged, this, &AHPMainWindow::aListChangedReact);
 }
 
 AHPMainWindow::~AHPMainWindow() {
@@ -23,38 +29,28 @@ AHPMainWindow::~AHPMainWindow() {
 
 void AHPMainWindow::cAddSubmitTriggered() {
   this->set.addCriterion(ui->cAddName->text().toStdString());
-  this->aListChangedReact();
-  this->cListChangedReact();
-  this->cListValueReact();
+  emit cListChanged();
 }
 
 void AHPMainWindow::aAddSubmitTriggered() {
   this->set.addAlternative(ui->aAddName->text().toStdString());
-  this->aListChangedReact();
-  this->cListChangedReact();
-  this->cListValueReact();
+  emit aListChanged();
 }
 
 
 void AHPMainWindow::cListChangedReact() {
+  this->set.recalcCriterionRatings();
   ui->cTableView->setModel(NULL);
+  ui->cValueTable->setModel(NULL);
   ui->cTableView->setModel(&this->criteriaModel);
-  ui->cTableView->show();
+  ui->cValueTable->setModel(&this->criteriaRatingModel);
+  
+  emit aListChanged();
 }
 
 void AHPMainWindow::aListChangedReact() {
   ui->aTableView->setModel(NULL);
   ui->aTableView->setModel(&this->alternativesModel);
-  ui->aTableView->show();
-}
-
-void AHPMainWindow::cListValueReact() {
-  Mat& x = this->set.getCriteriaRating();
-  vector<double> y = (x*x*x*x).getNormalizedEigenvalues();
-  this->criteriaRatingModel.setRatings(y);
-  ui->cValueTable->setModel(NULL);
-  ui->cValueTable->setModel(&this->criteriaRatingModel);
-  ui->cValueTable->show();
 }
 
 void AHPMainWindow::cSaveFile() {
@@ -65,7 +61,8 @@ void AHPMainWindow::cSaveFile() {
 void AHPMainWindow::cLoadFile() {
   QString path = QFileDialog::getOpenFileName(this, QString("Datei laden ..."), NULL, NULL);
   cLoadFileFrom(path);
-  cListValueReact();
+  
+  emit cListChanged();
 }
 
 void AHPMainWindow::cSaveFileTo(QString path) {

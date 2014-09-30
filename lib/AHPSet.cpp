@@ -13,7 +13,7 @@ AHPSet::AHPSet(const AHPSet& orig) {
 }
 
 AHPSet::AHPSet(vector<Criterion*>& criteria, vector<Alternative*>& alternatives, Mat& criteriaRating)
-  : criteria(criteria), alternatives(alternatives), criteriaRating(criteriaRating) {
+: criteria(criteria), alternatives(alternatives), criteriaRating(criteriaRating) {
 }
 
 AHPSet::~AHPSet() {
@@ -42,11 +42,16 @@ void AHPSet::addCriterion(string name) {
 
 void AHPSet::criterionChanged() {
   resizeRatings();
+  recalcCriterionRatings();
 }
 
 void AHPSet::addAlternative(string name) {
   this->alternatives.push_back(new Alternative(name, *this));
   //alternativesChanged();
+}
+
+vector<double> AHPSet::getCriteriaRatings() const {
+  return criteriaRatings;
 }
 
 void AHPSet::alternativesChanged() {
@@ -61,6 +66,13 @@ void AHPSet::resizeRatings() {
     this->alternatives[i]->criteriaChanged();
   }
 }
+
+void AHPSet::recalcCriterionRatings() {
+  this->criteriaRatings = (criteriaRating*criteriaRating*
+      criteriaRating*
+      criteriaRating).getNormalizedEigenvalues();
+}
+
 
 void serialize(ostringstream& os, Mat& data) {
   int size = data.getData().size();

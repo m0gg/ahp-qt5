@@ -42,7 +42,8 @@ bool CriterionListModel::setData(const QModelIndex& index, const QVariant& value
       this->ahpSet.getCriteriaRating().set(index.column(), index.row(), 1.0/value.toDouble());
     }
   }
-  emit dataChanged();
+  QModelIndex t = createIndex(index.column(), index.row());
+  emit dataChanged(t, t);
   return true;
 }
 

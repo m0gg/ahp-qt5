@@ -16,11 +16,6 @@ public:
   
   Mat operator*(Mat& right);
   
-  void push_back();
-  void push_back_y();
-  void push_back_y(unsigned int min_x_size);
-  void push_back_x();
-  
   unsigned int getRowCount();
   unsigned int getColCount();
   

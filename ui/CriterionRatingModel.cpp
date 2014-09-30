@@ -1,39 +1,39 @@
 #include "CriterionRatingModel.h"
 
-CriterionRatingModel::CriterionRatingModel(QObject *parent) 
-  : QAbstractTableModel(parent) {
+CriterionRatingModel::CriterionRatingModel(AHPSet& ahpSet, QObject *parent) 
+: QAbstractTableModel(parent), ahpSet(ahpSet) {
 }
 
 int CriterionRatingModel::rowCount(const QModelIndex& /*parent*/) const {
-  return this->ratings.size();
+  return this->ahpSet.getCriteria().size();
 }
 
 int CriterionRatingModel::columnCount(const QModelIndex& /*parent*/) const {
-  return this->ratings.size();
+  return 1;
 }
 
 Qt::ItemFlags CriterionRatingModel::flags(const QModelIndex& /*index*/) const {
   return Qt::ItemIsSelectable;
 }
 
-void CriterionRatingModel::setRatings(vector<double> ratings) {
-  this->ratings = ratings;
-}
-
-vector<double> CriterionRatingModel::getRatings() const {
-  return ratings;
-}
-
-QVariant CriterionRatingModel::headerData(int /*section*/, Qt::Orientation /*orientation*/, int role) const {
+QVariant CriterionRatingModel::headerData(int section, Qt::Orientation orientation, int role) const {
   if(role == Qt::DisplayRole) {
-    return QString("Rating");
+    switch(orientation) {
+      case Qt::Vertical:
+        return QString::fromStdString(this->ahpSet.getCriteria()[section]->getName());
+        break;
+      case Qt::Horizontal:
+        return QString("Rating");
+        break;
+    }
+    
   }
   return QVariant();
 }
 
 QVariant CriterionRatingModel::data(const QModelIndex& index, int role) const {
   if(role == Qt::DisplayRole) {
-    return QString("%1").arg(this->ratings[index.row()]);
+    return QString("%1").arg(this->ahpSet.getCriteriaRatings()[index.row()]);
   }
   return QVariant();
 }

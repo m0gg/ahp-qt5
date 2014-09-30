@@ -36,7 +36,6 @@ private slots:
   void aAddSubmitTriggered();
   void cListChangedReact();
   void aListChangedReact();
-  void cListValueReact();
   void cSaveFile();
   void cLoadFile();
   void cSaveFileTo(QString);
