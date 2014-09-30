@@ -4,8 +4,6 @@ ahp_LDADD = ${top_builddir}/ui/libui.a \
             ${top_builddir}/lib/libahp.a \
             ${QT5_LIBS}
 
-ahp_LDFLAGS = -all-static
-
 
 ahp_CFLAGS = ${QT5_CFLAGS} \
             -I${top_builddir}/lib/ -L${top_builddir}/lib/ -L${top_builddir}/ui/ \
